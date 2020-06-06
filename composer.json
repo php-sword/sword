@@ -1,0 +1,36 @@
+{
+    "name": "php-sword/sword",
+    "description": "The phpSword Framework.",
+    "type": "project",
+    "keywords": [
+        "php",
+        "swoole",
+        "sword"
+    ],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Kyour",
+            "email": "kyour@vip.qq.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "ext-pdo": "*",
+        "ext-redis": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "sethink/swoole-orm": "^0.0.7",
+        "php-sword/framework": "0.0.*"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        },
+        "psr-0": {
+            "": "extend/"
+        }
+    }
+}
