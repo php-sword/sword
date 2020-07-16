@@ -21,7 +21,8 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "sethink/swoole-orm": "^0.0.7",
-        "php-sword/framework": "0.0.*"
+        "php-sword/framework": "0.0.*",
+        "easyswoole/orm": "^1.4"
     },
     "require-dev": {
     },
