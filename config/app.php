@@ -1,35 +1,22 @@
 <?php
-
+/**
+ * 应用的配置信息
+ * 通过config('app.xx')获取
+ */
 return [
-    //监听地址
-    'host' => "0.0.0.0",
-    //监听端口
-    'port' => 8103,
+    // 系统时区
+    'timezone' => 'Asia/Shanghai',
+    // 启用调试模式
+    'debug' => true,
 
-    //监听事件
-    'listener' => [
-        'Connect' => [\app\listener\OnConnect::class, "handle"],
-        'Receive' => [\app\listener\OnReceive::class, "handle"],
-        'Close'   => [\app\listener\OnClose::class,   "handle"]
-    ],
+    //===========其他配置===========
 
-    //swoole的set参数
-    'swoole_set' => [
+    // 应用名 -保证唯一性，避免在同一机器上运行相同的应用
+    'app_name' => 'xoshe',
 
-        //启用结束符分包协议
-        'open_eof_check' => true,
-        //设定结束符
-        'package_eof' => "\r\n",
-        //日志文件
-        // 'log_file' => APP_PATH.'/runtime/log.txt',
+    // 服务器域名
+    'host' => 'youhost.cn',
+    // 资源服务器域名
+    'res_host' => 'res.youhost.cn'
 
-        //n秒没有数据传输就进行检测
-        'tcp_keepidle' => 5,
-        //n秒探测一次
-        'tcp_keepinterval' => 5,
-        //探测的次数，超n次后还没回包close此连接
-        'tcp_keepcount' => 2
-    ],
-
-    'userFd' => 'im_user_binfd_'
 ];

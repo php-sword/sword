@@ -5,6 +5,7 @@
     "keywords": [
         "php",
         "swoole",
+        "easyswoole",
         "sword"
     ],
     "license": "Apache-2.0",
@@ -15,23 +16,13 @@
         }
     ],
     "require": {
-        "php": "^7.2",
-        "ext-pdo": "*",
-        "ext-redis": "*",
-        "ext-json": "*",
-        "ext-mbstring": "*",
-        "sethink/swoole-orm": "^0.0.7",
-        "php-sword/framework": "0.0.*",
-        "easyswoole/orm": "^1.4"
-    },
-    "require-dev": {
+        "easyswoole/easyswoole": "^3.4",
+        "ext-redis": "*"
     },
     "autoload": {
         "psr-4": {
-            "app\\": "app"
-        },
-        "psr-0": {
-            "": "extend/"
+            "App\\": "App/",
+            "Sword\\": "Sword-Dev/"
         }
     }
 }
