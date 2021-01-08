@@ -14,13 +14,13 @@ $config = [
     //静态首页
     'static_index' => true,
     //http端口  第一个是外网端口，第二个是内网服务端口
-    'http_port' => [80, 8105],
+    'http_port' => [80, 8100],
     //https端口 第一个是外网端口，第二个是内网服务端口
-    'https_port' => [443, 8105],
+    'https_port' => [443, 8100],
     //外网访问域名 多个用空格分割
     'host_name' => 'sword.kyour.cn',
     //应用根目录 绝对路径，以/结尾
-    'root_path' => __DIR__, //默认当前路径
+    'root_path' => __DIR__ . '/', //默认当前路径
     //静态资源目录名称
     'public_path' => 'Public',
 

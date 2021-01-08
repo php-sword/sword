@@ -35,10 +35,27 @@ composer create-project php-sword/sword sword *
 composer update php-sword/sword
 ```
 
-## 文档
+## 启动项目
+```shell
+./sword server start
+```
 
-开发文档: [http://sword.kyour.cn/doc](http://sword.kyour.cn/doc)
+> 若出现无执行权限的提示，请先赋予`sword`文件执行权限：
+```shell
+chmod -R 755 ./sword
+```
 
+守护进程（后台运行）:
+```shell
+./sword server start -d
+```
+
+停止运行：
+```shell
+./sword server stop
+```
+
+更多详细文档: [http://sword.kyour.cn/doc](http://sword.kyour.cn/doc)
 
 ## 项目结构
 ```
