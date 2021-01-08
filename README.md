@@ -10,6 +10,7 @@
 * 支持更多的`PSR`规范
 * 基于Swoole常驻内存
 * 协程TCP、UDP、WEB_SOCKET 服务端
+* 严格的版本控制
 
 ## 安装
 安装Composer，请先确保正确安装php并配置了环境变量。

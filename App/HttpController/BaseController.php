@@ -34,15 +34,14 @@ class BaseController extends Controller
     }
 
     //获取Session对象
-    public function session(string $key, $data = 'SWORD_GET')
+    public function session(string $key, $data = SWORD_NULL)
     {
         $session = Session::getInstance();
 
-        if($data == 'SWORD_GET'){
+        if($data === SWORD_NULL){
             $d = $session->get($key);
             if($d){
                 return $d;
-                // return unserialize($d);
             }else{
                 return null;
             }
@@ -50,7 +49,6 @@ class BaseController extends Controller
             $session->del($key);
         }else{
             $session->set($key, $data);
-            // $session->set($key,serialize($data));
         }
 
     }
@@ -130,7 +128,7 @@ class BaseController extends Controller
         if($count >= 0) $ret['count'] = $count;
 
         $this->response()->withHeader('Content-type','application/json;charset=utf-8');
-        $this->response()->withHeader('Access-Control-Allow-Origin','*'); //*.kyour.cn
+        $this->response()->withHeader('Access-Control-Allow-Origin','*');
         $this->write(json_encode($ret));
 
         return true;

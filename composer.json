@@ -1,13 +1,8 @@
 {
     "name": "php-sword/sword",
-    "description": "The phpSword Framework.",
+    "description": "The PhpSword Framework.",
     "type": "project",
-    "keywords": [
-        "php",
-        "swoole",
-        "easyswoole",
-        "sword"
-    ],
+    "keywords": ["php", "swoole", "easyswoole", "sword"],
     "license": "Apache-2.0",
     "authors": [
         {
@@ -16,7 +11,7 @@
         }
     ],
     "require": {
-        "easyswoole/easyswoole": "^3.4",
+        "php-sword/framework": "^0.0",
         "ext-redis": "*"
     },
     "autoload": {

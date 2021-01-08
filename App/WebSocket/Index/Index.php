@@ -1,17 +1,13 @@
 <?php
 namespace App\WebSocket\Index;
 
-use App\Model\Article;
-use App\Model\UserFollow;
 use EasySwoole\Socket\AbstractInterface\Controller;
 
 use App\WebSocket\Base;
-use EasySwoole\Mysqli\QueryBuilder;
-
-use App\Model\User as UserModel;
 
 /**
- * 前端帖子相关
+ * Class User
+ * @package App\WebSocket\Index
  */
 class User extends Controller
 {
@@ -21,7 +17,7 @@ class User extends Controller
         $args = $this->caller()->getArgs();
         $base = new Base($args, $this->response());
 
-        $base->withData(0, 'success',['data' => 'hello wlord!']);
+        $base->withData(0, 'success',['data' => 'hello world!']);
     }
 
 }

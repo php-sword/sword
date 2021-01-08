@@ -2,7 +2,7 @@
 <?php
 /**
  * 因为nginx配置代理、ssl、websocket较为复杂 所以编写了这个工具。
- * 用法：1.在$config变量中配置你的信息
+ * 用法： 1.在$config变量中配置你的信息
  *       2.在该目录运行命令 ./nginx_make.php
  *       3.在该目录会自动生成 nginx.conf,这个文件就是配置文件，将它添加到nginx中
  *       4.重启nginx服务器即可
@@ -18,19 +18,19 @@ $config = [
     //https端口 第一个是外网端口，第二个是内网服务端口
     'https_port' => [443, 8105],
     //外网访问域名 多个用空格分割
-    'host_name' => 'www.xoshe.cn xoshe.cn xo.kyour.cn',
+    'host_name' => 'sword.kyour.cn',
     //应用根目录 绝对路径，以/结尾
-    'root_path' => '/data/www/xoshe/',
+    'root_path' => __DIR__, //默认当前路径
     //静态资源目录名称
     'public_path' => 'Public',
 
-    //websocket的url,为空则不开启,不支持填写'/'
-    'ws_url' => '/ws',
+    //websocket的url,如:'/ws',为空则不开启,不支持填写'/'
+    'ws_url' => '',
 
     //https的ssl证书文件（绝对路径） -仅开启https有效
-    'ssl_cer' => '/data/www/xoshe/ssl/fullchain.cer',
+    'ssl_cer' => '/data/www/sword/ssl/fullchain.cer',
     //https的ssl密钥文件（绝对路径） -仅开启https有效
-    'ssl_key' => '/data/www/xoshe/ssl/mk.kyour.cn.key',
+    'ssl_key' => '/data/www/sword/ssl/ssl.key',
 
     //图片缓存时间
     'img_cache' => '3d',

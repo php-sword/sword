@@ -3,12 +3,6 @@ namespace App\WebSocket;
 
 use EasySwoole\Socket\AbstractInterface\Controller;
 
-use EasySwoole\Session\Session;
-
-use App\WebSocket\Base;
-
-use App\Model\User as UserModel;
-
 /**
  * Class Index
  *
@@ -25,15 +19,7 @@ class Index extends Controller
         $param = $this->caller()->getArgs();
         $base = new Base($param, $this->response());
 
-        $s_user = $base->session('user');
-        //判断是否在别处登录
-        if($s_user){
-            $token = UserModel::create()->where('id', $s_user['id'])->val('token');
-            if($token != $base->sessionId()){
-                //清空session
-                $base->session('user', null);
-            }
-        }
+        $base->withData(0, 'success',['data' => 'hello world!']);
     }
 
 }
