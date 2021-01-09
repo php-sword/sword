@@ -27,6 +27,6 @@ return [
             'timeout' => 15
         ]
     ],
-    'TEMP_DIR' => './Temp',
-    'LOG_DIR' => './Temp/Log'
+    'TEMP_DIR' => EASYSWOOLE_ROOT.'/Temp',
+    'LOG_DIR' => EASYSWOOLE_ROOT.'/Temp/Log'
 ];
