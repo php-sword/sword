@@ -26,20 +26,23 @@ mv composer.phar /usr/local/bin/composer
 
 框架全新安装：
 ```shell
-composer create-project php-sword/sword sword *
+composer create-project php-sword/sword sword
 ```
-> 可以将 `sword *` 换成你的项目名和版本号，如 `sw-obj 0.*`
+> 可以将 `sword` 换成你的项目名和版本号，如 `myproject 0.*`
 
 如果已经安装并需要更新，切换至项目更目录执行下面的命令：
 ```shell
-composer update php-sword/sword
+composer update php-sword/framework
 ```
 
 ## 启动项目
 ```shell
+php sword server start
+```
+当然也可以使用这种方式：
+```shell
 ./sword server start
 ```
-
 > 若出现无执行权限的提示，请先赋予`sword`文件执行权限：
 ```shell
 chmod -R 755 ./sword
@@ -47,12 +50,12 @@ chmod -R 755 ./sword
 
 守护进程（后台运行）:
 ```shell
-./sword server start -d
+php sword server start -d
 ```
 
 停止运行：
 ```shell
-./sword server stop
+php sword server stop
 ```
 
 更多详细文档: [http://sword.kyour.cn/doc](http://sword.kyour.cn/doc)
@@ -100,4 +103,4 @@ PATH  部署目录
 
 本项目包含的第三方源码和二进制文件之版权信息另行标注。
 
-更多细节参阅 [LICENSE.txt](LICENSE.txt)
+更多细节参阅 [LICENSE](LICENSE)

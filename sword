@@ -2,9 +2,9 @@
 <?php
 /**
  * PHPSword命令行入口文件
- * 启动服务：./sword server start
- * 常驻内存：./sword server start -d
- * 停止服务：./sword server stop
+ * 启动服务：php sword server start
+ * 常驻内存：php sword server start -d
+ * 停止服务：php sword server stop
  * 更多详细文档介绍，请转到：
  * https://github.com/php-sword/sword
  */
