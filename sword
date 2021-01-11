@@ -17,6 +17,6 @@ if(file_exists($file)) {
     die("include composer autoload.php fail\n Please run: composer install\n");
 }
 
-defined('ROOT_PATH') or define('EASYSWOOLE_ROOT', __DIR__);
+defined('ROOT_PATH') or define('ROOT_PATH', __DIR__);
 
-\Sword\SwooleEvent::bootstrap();
+\Sword\SwordEvent::bootstrap($argv);
