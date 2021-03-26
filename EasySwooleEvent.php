@@ -8,20 +8,16 @@ use EasySwoole\Http\Response;
 
 use EasySwoole\RedisPool\RedisPool;
 use EasySwoole\Socket\Dispatcher;
-use App\WebSocket\WebSocketParser;
 
 use EasySwoole\ORM\DbManager;
 use EasySwoole\ORM\Db\Connection;
-use EasySwoole\ORM\Db\Config as DbConfig;
 use EasySwoole\Redis\Config\RedisConfig;
 
 use EasySwoole\Template\Render;
-use App\Common\TemplateRender;
 use App\Common\ExceptionHandler;
 
 use EasySwoole\Session\Session;
 use EasySwoole\Session\SessionFileHandler;
-use App\Common\SessionRedisHandler;
 use EasySwoole\Component\Di;
 use EasySwoole\Component\Process\Manager;
 use Sword\Storage\Storage;
@@ -37,22 +33,6 @@ class EasySwooleEvent implements Event
 
         //触发sword事件
         SwordEvent::initialize();
-
-        // -------------------- HTTP --------------------
-        //onRequest事件
-//        Di::getInstance()->set(SysConst::HTTP_GLOBAL_ON_REQUEST,function (Request $request,Response $response){
-//
-//            //启用Session会话
-//            $session_conf = config('session');
-//            $cookie = $request->getCookieParams($session_conf['sessionName']);
-//            if(empty($cookie)){
-//                $sid = Session::getInstance()->sessionId();
-//                $response->setCookie($session_conf['sessionName'], $sid, time() + $session_conf['expire']);
-//            }else{
-//                Session::getInstance()->sessionId($cookie);
-//            }
-//            return true;
-//        });
 
         // 注册异常处理
         Di::getInstance()->set(SysConst::HTTP_EXCEPTION_HANDLER, [ExceptionHandler::class,'handle']);
