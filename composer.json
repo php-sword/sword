@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "php-sword/framework": "^0.0",
-        "ext-redis": "*"
+        "ext-json": "*",
+        "php-sword/framework": "^0.1"
     },
     "autoload": {
         "psr-4": {

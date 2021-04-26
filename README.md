@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/php-sword/sword/v)](//packagist.org/packages/php-sword/sword) [![Total Downloads](https://poser.pugx.org/php-sword/sword/downloads)](//packagist.org/packages/php-sword/sword) [![PHP Version](https://img.shields.io/badge/php-%3E%3D7.1-8892BF.svg)](http://www.php.net/) [![License](https://poser.pugx.org/php-sword/sword/license)](//packagist.org/packages/php-sword/sword)
 
-> 基于EasySwoole的PHP常驻内存开发框架
+> 基于EasySwoole的PHP常驻内存快速开发框架
 
 ## 主要特性
 

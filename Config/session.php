@@ -3,7 +3,8 @@
  * Session服务配置
  */
 return [
-    'type'        => 'redis', //储存驱动 redis、file
+    'enable'      => true, //启用Session
+    'type'        => 'file', //储存驱动 redis、file
     'sessionName' => 'sessionId', //Session的CookieName
-    'expire'      => 86400 * 7, //过期时间 s
+    'expire'      => 86400 * 7 //过期时间 s
 ];

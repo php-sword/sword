@@ -1,9 +1,6 @@
 <?php declare(strict_types=1);
 namespace App\WebSocket;
 
-use EasySwoole\Socket\AbstractInterface\Controller;
-use EasySwoole\Session\Session;
-
 /**
  * Class BaseSocket
  *
@@ -24,7 +21,7 @@ class Base
     }
 
     //Session操作
-    public function session(string $key = SWORD_NULL, $data = SWORD_NULL, $expire = null)
+    public function session(string $key = SWORD_NULL, $data = SWORD_NULL)
     {
         // $args = $this->caller()->getArgs();
         $args = $this->args;

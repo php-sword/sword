@@ -6,10 +6,10 @@ use EasySwoole\Socket\AbstractInterface\Controller;
 use App\WebSocket\Base;
 
 /**
- * Class User
+ * Class Index
  * @package App\WebSocket\Index
  */
-class User extends Controller
+class Index extends Controller
 {
     //查询我的信息
     public function getInfo()

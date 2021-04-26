@@ -10,7 +10,7 @@
  */
 $config = [
     //类型 1:http 2:https 3:http+https
-    'type' => 1,
+    'type' => 3,
     //静态首页 -开启后直接由nginx返回首页
     'static_index' => false,
 
@@ -19,7 +19,7 @@ $config = [
     //https映射端口 -外网
     'https_port' => 443,
     //内网服务端口 与dev.php中配置的端口一直
-    'server_port' => 8107,
+    'server_port' => 8100,
 
     //外网访问域名 多个用空格分割
     'host_name' => 'sword.kyour.cn',
@@ -35,7 +35,7 @@ $config = [
     //https的ssl证书文件（绝对路径） -仅开启https有效
     'ssl_cer' => '/usr/local/nginx/conf/ssl/sword.kyour.cn/fullchain.cer',
     //https的ssl密钥文件（绝对路径） -仅开启https有效
-    'ssl_key' => '/usr/local/nginx/conf/ssl/sword.kyour.cn/nt.kyour.cn.key',
+    'ssl_key' => '/usr/local/nginx/conf/ssl/sword.kyour.cn/sword.kyour.cn.key',
 
     //图片缓存时间
     'img_cache' => '3d',
@@ -221,3 +221,5 @@ if($config['type'] == 1){
     $conf_val = $str_http . $str_https;
 }
 file_put_contents("./nginx.conf",$conf_val);
+
+echo "Output successful.\n./nginx.conf\n";

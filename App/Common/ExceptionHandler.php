@@ -9,6 +9,7 @@ class ExceptionHandler
 {
     public static function handle( \Throwable $exception, Request $request, Response $response )
     {
+        //获取配置 -是否调试模式
         $debug = config('app.debug',false);
 
         $response->withStatus(Status::CODE_INTERNAL_SERVER_ERROR);
