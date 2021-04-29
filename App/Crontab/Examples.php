@@ -31,7 +31,7 @@ class Examples extends AbstractCronTask
      */
     public function run(int $taskId, int $workerIndex)
     {
-        echo __METHOD__.'\n';
+        echo __METHOD__."\n";
     }
 
     /**

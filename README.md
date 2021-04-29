@@ -6,14 +6,21 @@
 
 ## 主要特性
 
+* 更熟悉的编程模式
 * 采用`PHP7`强类型（严格模式）
 * 支持更多的`PSR`规范
 * 基于Swoole常驻内存
-* 协程TCP、UDP、WEB_SOCKET 服务端
 * 严格的版本控制
 
 ## 安装
-安装Composer，请先确保正确安装php并配置了环境变量。
+- 安装Swoole扩展，已安装的跳过此步骤
+  
+访问swoole官网文档 
+ [wiki.swoole.com](https://wiki.swoole.com/#/environment)
+
+根据文档进行操作
+  
+- 安装Composer，已安装的跳过此步骤
 
 >通过执行 `php -v` 命令，如果出现版本号表示安装正常
 
@@ -24,13 +31,13 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 ```
 
-框架全新安装：
+- 框架全新安装：
 ```shell
 composer create-project php-sword/sword sword
 ```
 > 可以将 `sword` 换成你的项目名和版本号，如 `myproject 0.*`
 
-如果已经安装并需要更新，切换至项目更目录执行下面的命令：
+- 如果已经安装并需要更新，切换至项目更目录执行下面的命令：
 ```shell
 composer update php-sword/framework
 ```
@@ -68,25 +75,23 @@ PATH  部署目录
 │  ├─WebSocket           WebSocket控制器目录
 │  ├─Crontab             定时器、计划任务
 │  ├─Common              其他公共类
-│  ├─Model               模型目录
-│  ├─Views               html视图目录
+│  ├─Model               ORM模型
 │  └─helper.php          公共函数文件
 ├─Config              配置文件目录
 │  ├─app.php              应用配置
 │  ├─database.php         数据库配置
-│  ├─redis.php            redis服务器配置
-│  ├─session.php            redis服务器配置
+│  ├─redis.php            redis服务配置
+│  ├─session.php          session配置
 │  └─xxx.php              更多自定义配置
 ├─Public         Web静态资源目录
-├─Temp           临时信息、缓存目录
-├─vendor         PHP包源码目录
+├─Temp           临时数据、缓存、日志
+├─vendor         Composer包
 ├─bootstrap.php  bootstrap事件
 ├─composer.json  Composer包配置信息
-├─dev.php        服务器配置信息
-├─EasySwooleEvent.php    服务器事件处理
-├─nginx_make.php    Nginx代理生成工具
-├─sword             快捷启动可执行文件
-├─...
+├─dev.php        Easyswoole配置信息
+├─EasySwooleEvent.php   Easyswoole事件
+├─nginx_make.php    Nginx配置生成工具
+└─sword             命令行入口
 ```
 
 ## 更新记录

@@ -1,29 +1,28 @@
 <?php
 namespace App\Crontab;
 
-use EasySwoole\EasySwoole\Crontab\Crontab;
-use EasySwoole\Component\Process\AbstractProcess;
+use Sword\Component\Crontab\Register;
+
 /**
  * 定时任务注册方法
- * 
  */
-
-class CrontabRegister
+class CrontabRegister extends Register
 {
-    //注册开启的定时任务
+    /**
+     * 注册开启的定时任务类
+     * 请使用字符串或 Examples::class 的方式
+     * @var array[string]
+     */
     protected $className = [
         //Examples::class,
         
     ];
 
-    function __construct()
+    /**
+     * 其他Task创建
+     */
+    public function taskCreate()
     {
-        //批量注册任务
-        foreach ($this->className as $c) {
-            Crontab::getInstance()->addTask($c);
-        }
-
-        //定义其他任务
 
     }
 
