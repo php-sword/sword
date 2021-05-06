@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 namespace App\WebSocket;
 
+use EasySwoole\Socket\AbstractInterface\Controller;
+
 /**
  * Class BaseSocket
  *
@@ -8,30 +10,29 @@ namespace App\WebSocket;
  *
  * @package App\WebSocket
  */
-class Base
+class Base extends Controller
 {
-    public $args;
-    public $response;
 
-    public function __construct($args, $response)
-    {
-        $this->args = $args;
-        $this->response = $response;
-        // parent::__construct()
-    }
-
-    //Session操作
+    /**
+     * Session操作
+     * @param string $key
+     * @param string $data
+     * @return bool|mixed|null
+     * @throws \EasySwoole\Redis\Exception\RedisException
+     */
     public function session(string $key = SWORD_NULL, $data = SWORD_NULL)
     {
-        // $args = $this->caller()->getArgs();
-        $args = $this->args;
+        $args = $this->caller()->getArgs();
 
         $sname = config('session.sessionName');
         if(empty($args[$sname])){
             return false;
         }
 
+        if(empty($args[$sname])) return false;
+
         $value = cache($args[$sname]);
+        if(!$value) return false;
 
         if($key == SWORD_NULL){
             return $value;
@@ -44,6 +45,7 @@ class Base
             $value[$key] = $data;
             cache($args[$sname], $value);
         }
+        return true;
     }
 
     /**
@@ -52,7 +54,7 @@ class Base
      */
     public function sessionId()
     {
-        $args = $this->args;
+        $args = $this->caller()->getArgs();
 
         $sname = config('session.sessionName');
         if(empty($args[$sname])){
@@ -81,13 +83,12 @@ class Base
         if($count >= 0) $ret['count'] = $count;
 
         //判断是否存在ajax的token
-        $args = $this->args;
+        $args = $this->caller()->getArgs();
         if(!empty($args['ES_TOKEN'])){
             $ret['ES_TOKEN'] = $args['ES_TOKEN'];
         }
-        // echo json_encode($ret, JSON_UNESCAPED_UNICODE)."\n";
-        $this->response->setMessage(json_encode($ret));
 
+        $this->response()->setMessage(json_encode($ret));
         return true;
     }
 

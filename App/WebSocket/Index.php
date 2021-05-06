@@ -16,10 +16,7 @@ class Index extends Controller
     //心跳处理
     public function heart()
     {
-        $param = $this->caller()->getArgs();
-        $base = new Base($param, $this->response());
 
-        $base->withData(0, 'success',['data' => 'hello world!']);
     }
 
 }
