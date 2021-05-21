@@ -1,7 +1,6 @@
 <?php
 /**
  * EasySwoole框架配置信息
- *
  */
 return [
     'SERVER_NAME' => "EasySwoole",
@@ -20,8 +19,9 @@ return [
             'max_wait_time'=> 3,
 
             // (可选参数）使用 http 上传大文件时可以进行配置
-            'package_max_length' => config('app.http_upload') * 1024 * 1024, // 即 100 M
+            'package_max_length' => config('app.http_upload') * 1024 * 1024, // 若为50即 50 M
         ],
+        // 设置 EasySwoole 框架独立实现的 Task 任务组件的配置
         'TASK' => [
             'workerNum' => 4,
             'maxRunningNum' => 128,

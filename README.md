@@ -1,6 +1,9 @@
 # PHP-Sword
 
-[![Latest Stable Version](https://poser.pugx.org/php-sword/sword/v)](//packagist.org/packages/php-sword/sword) [![Total Downloads](https://poser.pugx.org/php-sword/sword/downloads)](//packagist.org/packages/php-sword/sword) [![PHP Version](https://img.shields.io/badge/php-%3E%3D7.1-8892BF.svg)](http://www.php.net/) [![License](https://poser.pugx.org/php-sword/sword/license)](//packagist.org/packages/php-sword/sword)
+[![Latest Stable Version](https://poser.pugx.org/php-sword/sword/v)](//packagist.org/packages/php-sword/sword) 
+[![Total Downloads](https://poser.pugx.org/php-sword/sword/downloads)](//packagist.org/packages/php-sword/sword) 
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D7.3-8892BF.svg)](http://www.php.net/) 
+[![License](https://poser.pugx.org/php-sword/sword/license)](//packagist.org/packages/php-sword/sword)
 
 > 基于EasySwoole的PHP常驻内存快速开发框架
 
@@ -22,9 +25,7 @@
   
 - 安装Composer，已安装的跳过此步骤
 
->通过执行 `php -v` 命令，如果出现版本号表示安装正常
-
-再通过以下命令下载composer：
+通过如下命令下载Composer：
 
 ```shell
 curl -sS https://getcomposer.org/installer | php
