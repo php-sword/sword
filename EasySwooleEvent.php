@@ -23,9 +23,5 @@ class EasySwooleEvent implements Event
         // TODO: Implement mainServerCreate() method.
         SwordEvent::mainServerCreate($register);
 
-        /**
-         * **************** Crontab任务计划 **********************
-         */
-        new \App\Crontab\CrontabRegister();
     }
 }

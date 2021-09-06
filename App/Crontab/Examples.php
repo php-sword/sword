@@ -1,17 +1,21 @@
 <?php
 namespace App\Crontab;
 
-use App\Model\Express;
-use App\Model\Order;
 use EasySwoole\EasySwoole\Crontab\AbstractCronTask;
 
 /**
- * 定时任务
+ * 定时任务示例
  * Class Examples
  * @package App\Crontab
  */
 class Examples extends AbstractCronTask
 {
+
+    /**
+     * 是否启用该任务
+     * @var bool
+     */
+    const enable = false;
 
     public static function getRule(): string
     {
@@ -42,6 +46,6 @@ class Examples extends AbstractCronTask
      */
     public function onException(\Throwable $throwable, int $taskId, int $workerIndex)
     {
-        echo 'Error: '. __METHOD__ . ' '.$throwable->getMessage();
+        \Sword\Log::get()->error(__METHOD__ . ' '.$throwable->getMessage());
     }
 }

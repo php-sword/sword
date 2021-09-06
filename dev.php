@@ -3,10 +3,10 @@
  * EasySwoole框架配置信息
  */
 return [
-    'SERVER_NAME' => "EasySwoole",
+    'SERVER_NAME' => "PHPSword",
     'MAIN_SERVER' => [
         'LISTEN_ADDRESS' => '0.0.0.0',
-        'PORT' => 8100,
+        'PORT' => config('app.server_port')?? 8100,
         //服务类型 可选为 EASYSWOOLE_SERVER  EASYSWOOLE_WEB_SERVER EASYSWOOLE_WEB_SOCKET_SERVER,EASYSWOOLE_REDIS_SERVER
         'SERVER_TYPE' => config('app.enable_ws')?EASYSWOOLE_WEB_SOCKET_SERVER:EASYSWOOLE_WEB_SERVER,
         'SOCK_TYPE' => SWOOLE_TCP,

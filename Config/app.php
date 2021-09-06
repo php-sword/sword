@@ -12,6 +12,8 @@ return [
     'app_name' => 'school',
     // 服务器域名
     'host' => 'xy.kyour.cn',
+    //服务内网端口
+    'server_port' => 8100,
 
     //===========功能配置===========
 
@@ -19,7 +21,7 @@ return [
     'enable_ws' => false,
     //是否启用热重载，Http控制器有效
     'hot_reload' => false,
-    //Http上传最大值,单位MB
+    //Http上传最大文件限制,单位MB
     'http_upload' => 50,
 
     //===========其他配置===========
