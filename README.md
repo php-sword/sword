@@ -5,22 +5,31 @@
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D7.3-8892BF.svg)](http://www.php.net/) 
 [![License](https://poser.pugx.org/php-sword/sword/license)](//packagist.org/packages/php-sword/sword)
 
-> 基于EasySwoole的PHP常驻内存快速开发框架
+```
+   _____                      _  
+  / ____|                    | |  PHP      v7.4.21
+ | (_____      _____  _ __ __| |  Swoole   v4.7.1
+  \___ \ \ /\ / / _ \| '__/ _` |  Temp Dir /www/dev/Temp
+  ____) \ V  V | (_) | | | (_| |  Log Dir  /www/dev/Temp/Log
+ |_____/ \_/\_/ \___/|_|  \__,_|  Based EasySwoole v3.4.6
+ ------------------------v0.1.12------------------------
+```
+> 基于EasySwoole的PHP协程快速开发框架，让你更专注于业务代码的开发
 
 ## 主要特性
 
-* 更熟悉的编程模式
 * 采用`PHP7`强类型（严格模式）
-* 支持更多的`PSR`规范
 * 基于Swoole常驻内存
-* 严格的版本控制
+* 更快速的上手Swoole开发
+* 清晰的项目结构
+* 提供更多便捷的工具
+* 更优的静态资源处理
 
 ## 安装
 - 安装Swoole扩展，已安装的跳过此步骤
   
 访问swoole官网文档 
  [wiki.swoole.com](https://wiki.swoole.com/#/environment)
-
 根据文档进行操作
   
 - 安装Composer，已安装的跳过此步骤
@@ -32,13 +41,12 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 ```
 
-- 框架全新安装：
+- 项目构建安装：
 ```shell
 composer create-project php-sword/sword sword
 ```
-> 可以将 `sword` 换成你的项目名和版本号，如 `myproject 0.*`
 
-- 如果已经安装并需要更新，切换至项目更目录执行下面的命令：
+- 如果已经安装并需要更新，项目根目录执行命令：
 ```shell
 composer update php-sword/framework
 ```
@@ -46,14 +54,6 @@ composer update php-sword/framework
 ## 启动项目
 ```shell
 php sword server start
-```
-当然也可以使用这种方式：
-```shell
-./sword server start
-```
-> 若出现无执行权限的提示，请先赋予`sword`文件执行权限：
-```shell
-chmod -R 755 ./sword
 ```
 
 守护进程（后台运行）:
@@ -72,17 +72,19 @@ php sword server stop
 ```
 PATH  部署目录
 ├─App           应用目录
-│  ├─HttpController      Http控制器目录
-│  ├─WebSocket           WebSocket控制器目录
-│  ├─Crontab             定时器、计划任务
-│  ├─Common              其他公共类
+│  ├─HttpController      Http控制器
+│  ├─WebSocket           WebSocket控制器
+│  ├─Crontab             定时任务
+│  ├─Process             自定义进程
+│  ├─Common              公共方法类
 │  ├─Model               ORM模型
-│  └─helper.php          公共函数文件
+│  └─helper.php          全局公共函数
 ├─Config              配置文件目录
 │  ├─app.php              应用配置
 │  ├─database.php         数据库配置
 │  ├─redis.php            redis服务配置
 │  ├─session.php          session配置
+│  ├─view.php             视图渲染配置
 │  └─xxx.php              更多自定义配置
 ├─Public         Web静态资源目录
 ├─Temp           临时数据、缓存、日志
