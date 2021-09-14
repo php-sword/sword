@@ -70,7 +70,7 @@ php sword server stop
 
 ## 项目结构
 ```
-PATH  部署目录
+PATH  项目根目录
 ├─App           应用目录
 │  ├─HttpController      Http控制器
 │  ├─WebSocket           WebSocket控制器

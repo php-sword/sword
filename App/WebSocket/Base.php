@@ -16,7 +16,7 @@ class Base extends Controller
     /**
      * Session操作
      * @param string $key
-     * @param string $data
+     * @param mixed $data
      * @return bool|mixed|null
      * @throws \EasySwoole\Redis\Exception\RedisException
      */
@@ -24,14 +24,16 @@ class Base extends Controller
     {
         $args = $this->caller()->getArgs();
 
-        $sname = config('session.sessionName');
-        if(empty($args[$sname])){
+        $name = config('session.session_name');
+        if(empty($args[$name])){
             return false;
         }
 
-        if(empty($args[$sname])) return false;
+        if(empty($args[$name])) return false;
 
-        $value = cache($args[$sname]);
+        $token = $args[$name];
+
+        $value = cache($token);
         if(!$value) return false;
 
         if($key == SWORD_NULL){
@@ -40,10 +42,10 @@ class Base extends Controller
             return $value[$key] ?? null;
         }elseif($data == null){
             unset($value[$key]);
-            cache($args[$sname], $value);
+            cache($token, $value);
         }else{
             $value[$key] = $data;
-            cache($args[$sname], $value);
+            cache($token, $value);
         }
         return true;
     }
@@ -56,11 +58,11 @@ class Base extends Controller
     {
         $args = $this->caller()->getArgs();
 
-        $sname = config('session.sessionName');
-        if(empty($args[$sname])){
+        $name = config('session.session_name');
+        if(empty($args[$name])){
             return false;
         }
-        return $args[$sname];
+        return $args[$name];
     }
 
     /**
@@ -88,8 +90,18 @@ class Base extends Controller
             $ret['ES_TOKEN'] = $args['ES_TOKEN'];
         }
 
-        $this->response()->setMessage(json_encode($ret));
+        $this->responseImmediately(json_encode($ret));
         return true;
+    }
+
+    /**
+     * 获取上传数据
+     * @return array
+     */
+    public function input(): array
+    {
+        $args = $this->caller()->getArgs();
+        return $args['data']??[];
     }
 
 }
