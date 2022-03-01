@@ -1,13 +1,13 @@
 <?php
 namespace App\WebSocket\Index;
 
-use App\WebSocket\Base;
+use App\WebSocket\BaseController;
 use EasySwoole\Socket\AbstractInterface\Controller;
 
 /**
  * 演示控制器
  */
-class Demo extends Base
+class Demo extends BaseController
 {
     //测试
     public function test()

@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace App\HttpController;
 
+use EasySwoole\Component\Context\ContextManager;
 use EasySwoole\Http\AbstractInterface\Controller;
 use EasySwoole\RedisPool\RedisPool;
 use EasySwoole\Template\Render;
@@ -11,8 +12,6 @@ use Sword\Component\Session\Session;
  */
 class BaseController extends Controller
 {
-    //模板渲染参数
-    private array $assignData = [];
 
     //输出内容
     protected function write(...$opt)
@@ -26,9 +25,9 @@ class BaseController extends Controller
     {
         $type = strtoupper($type);
         $req = $this->request();
-        if($type == 'get'){
+        if($type == 'GET'){
             return $req->getQueryParams();
-        }elseif ($type == 'post') {
+        }elseif ($type == 'POST') {
             return $req->getParsedBody();
         }else{
             return $req->getRequestParam();
@@ -57,31 +56,38 @@ class BaseController extends Controller
     //获取SessionId
     protected function sessionId()
     {
-        $request = $this->request();
-        return $request->getQueryParam('sessionId') ?: $request->getAttribute('sessionId');
+        return $this->request()->getAttribute('sessionId');
     }
 
-    //添加模板渲染参数
+    //添加数据参数
     protected function assign(...$opt): void
     {
         if(empty($opt)) return;
+        $context = ContextManager::getInstance();
+        $assignData = $context->get('assign');
+
         if(is_array($opt[0])){
             //是数组，合并数组
-            $this->assignData = array_merge($this->assignData, $opt[0]);
+            $assignData = array_merge($assignData, $opt[0]);
         }else if(is_string($opt[0])){
             //字符串，键对
-            $this->assignData[$opt[0]] = $opt[1];
+            $assignData[$opt[0]] = $opt[1];
         }
+
+        ContextManager::getInstance()->set('assign', $assignData);
     }
 
     //输出渲染模板
     protected function fetch(string $name, array $param = [], string $type = 'raw'): void
     {
         if($type == 'think'){
+            $context = ContextManager::getInstance();
+            $assignData = $context->get('assign');
+
             //判断是否已有参数
-            if($this->assignData){
+            if($assignData){
                 //合并数据
-                $param = array_merge($this->assignData, $param);
+                $param = array_merge($assignData, $param);
             }
             //ThinkPHP模板 渲染输出
             $this->response()->write(Render::getInstance()->render($name,$param));
@@ -93,17 +99,22 @@ class BaseController extends Controller
         }
     }
 
-    //方法不存在报错 404页面
+    //方法不存在错误响应 400页面
     protected function actionNotFound(?string $action)
     {
-        $this->response()->withStatus(404);
-        // $file = EASYSWOOLE_ROOT.'/vendor/easyswoole/easyswoole/src/Resource/Http/404.html';
-        // if(!is_file($file)){
-        //     $file = EASYSWOOLE_ROOT.'/src/Resource/Http/404.html';
-        // }
-        // $this->response()->write(file_get_contents($file));
-
-        $this->response()->write('404 not found');
+        $accept = $this->request()->getHeader('accept');
+        if($accept and strstr($accept[0], 'html')){
+            $response = $this->response();
+            $response->withStatus(400);
+            $file = ROOT_PATH. "/Public/400.html";
+            if(is_file($file)){
+                $response->write(file_get_contents($file));
+            }else{
+                $response->write('400 Bad Request');
+            }
+        }else{
+            $this->withData(400, '400 Bad Request');
+        }
         return null;
     }
 
@@ -117,6 +128,12 @@ class BaseController extends Controller
      */
     protected function withData(int $code = 0, string $msg = '', $result = [], int $count = -1)
     {
+        $context = ContextManager::getInstance();
+        $assignData = $context->get('assign');
+        if($assignData and is_array($result)){
+            $result = array_merge($assignData, $result);
+        }
+
         $ret = [
             'status' => $code === 0?1:0,
             'code'   => $code,

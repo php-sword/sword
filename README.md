@@ -6,13 +6,13 @@
 [![License](https://poser.pugx.org/php-sword/sword/license)](//packagist.org/packages/php-sword/sword)
 
 ```
-   _____                      _  
-  / ____|                    | |  PHP      v7.4.21
- | (_____      _____  _ __ __| |  Swoole   v4.7.1
+   _____                      _
+  / ____|                    | |  PHP      v7.4.27
+ | (_____      _____  _ __ __| |  Swoole   v4.8.6
   \___ \ \ /\ / / _ \| '__/ _` |  Temp Dir /www/dev/Temp
   ____) \ V  V | (_) | | | (_| |  Log Dir  /www/dev/Temp/Log
- |_____/ \_/\_/ \___/|_|  \__,_|  Based EasySwoole v3.4.6
- ------------------------v0.1.12------------------------
+ |_____/ \_/\_/ \___/|_|  \__,_|  Based EasySwoole v3.5.1
+ -------------------------v0.2.2-------------------------
 ```
 > 基于EasySwoole的PHP协程快速开发框架，让你更专注于业务代码的开发
 
@@ -93,8 +93,8 @@ PATH  项目根目录
 ├─composer.json  Composer包配置信息
 ├─dev.php        Easyswoole配置信息
 ├─EasySwooleEvent.php   Easyswoole事件
-├─nginx_make.php    Nginx配置生成工具
-└─sword             命令行入口
+├─nginx_make.php        Nginx配置生成工具
+└─sword          命令行入口
 ```
 
 ## 更新记录

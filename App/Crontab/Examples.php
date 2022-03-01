@@ -1,14 +1,14 @@
 <?php
 namespace App\Crontab;
 
-use EasySwoole\EasySwoole\Crontab\AbstractCronTask;
+use EasySwoole\Crontab\JobInterface;
 
 /**
  * 定时任务示例
  * Class Examples
  * @package App\Crontab
  */
-class Examples extends AbstractCronTask
+class Examples implements JobInterface
 {
 
     /**
@@ -17,23 +17,21 @@ class Examples extends AbstractCronTask
      */
     const enable = false;
 
-    public static function getRule(): string
+    public function crontabRule(): string
     {
         // 每分钟
         return '* * * * *';
     }
 
-    public static function getTaskName(): string
+    public function jobName(): string
     {
         return  __CLASS__;
     }
 
     /**
      * 定时任务入口
-     * @param int $taskId
-     * @param int $workerIndex
      */
-    public function run(int $taskId, int $workerIndex)
+    public function run()
     {
         echo __METHOD__."\n";
     }
@@ -41,10 +39,8 @@ class Examples extends AbstractCronTask
     /**
      * 异常处理
      * @param \Throwable $throwable
-     * @param int $taskId
-     * @param int $workerIndex
      */
-    public function onException(\Throwable $throwable, int $taskId, int $workerIndex)
+    public function onException(\Throwable $throwable)
     {
         \Sword\Log::get()->error(__METHOD__ . ' '.$throwable->getMessage());
     }

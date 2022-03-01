@@ -10,7 +10,7 @@ use EasySwoole\Socket\AbstractInterface\Controller;
  *
  * @package App\WebSocket
  */
-class Base extends Controller
+class BaseController extends Controller
 {
 
     /**
